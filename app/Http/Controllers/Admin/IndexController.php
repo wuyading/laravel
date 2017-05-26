@@ -12,6 +12,10 @@ use Illuminate\Http\Request;
 class IndexController extends Controller
 {
     public function index(){
-        return view('Admin/Index/index');
+        if(session('nickname')){
+            return view('Admin/Index/index',['controller'=>'index']);
+        }else{
+            return view('Admin/Login/login');
+        }
     }
 }

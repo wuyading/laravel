@@ -39,7 +39,6 @@
                     <tr>
                         <th>编号</th>
                         <th>图片</th>
-                        <th>分类</th>
                         <th>添加时间</th>
                         <th>操作</th>
                     </tr>
@@ -50,11 +49,9 @@
                             <td class="col-sm-3">
                                 <img src="{{ $album->image }}" alt="" style="width:50%">
                             </td>
-                            <td>55</td>
                             <td>{{ date('Y-m-d',$album->add_time) }}</td>
                             <td>
-                                <a class="btn btn-primary" href="/admin/album/edit?{{ $album->id }}">修改</a>
-                                <a class="btn btn-danger" href="javascript:" onclick="">删除</a>
+                                <a class="btn btn-danger" href="javascript:" onclick="ajaxDelete({{ $album->id }})">删除</a>
                             </td>
                         </tr>
                     @endforeach
@@ -74,5 +71,37 @@
 <!-- END CONTENT -->
 </div>
 <!-- END CONTAINER -->
+<script type="text/javascript">
+    function ajaxDelete(id) {
+        layer.alert('确定删除吗？', {
+            icon: 6
+            ,time: 0 //不自动关闭
+            ,btn: ['确定', '取消']
+            ,area: '200px'
+            ,yes: function(index){
+                $.post('{{ action('Admin\AlbumController@ajaxDelete') }}',{'id':id},function (res) {
+                    if(res.status == 1001){
+                        layer.alert(res.msg, {
+                            icon: 6
+                            ,time: 0 //不自动关闭
+                            ,btn: ['确定']
+                            ,area: '200px'
+                            ,yes: function(index){
+                                layer.close(index);
+                                window.location.href = "{{ action('Admin\AlbumController@index') }}";
+                            }
+                        });
+                    }else{
+                        layer.alert(res.msg, {icon: 0,time:0,closeBtn: 0});
+                    }
+                },'json');
+            }
+            ,no: function(index){
+                layer.close(index);
+            }
+        });
+
+    }
+</script>
 </body>
 </html>

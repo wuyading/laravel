@@ -26,6 +26,10 @@ Route::get('admin/user','Admin\UserController@index'); //用户模块
 Route::get('admin/login_out','Admin\LoginController@login_out'); //登出
 Route::get('admin/album','Admin\AlbumController@index'); //相册列表
 Route::get('admin/album/add','Admin\AlbumController@add'); //添加照片
+Route::get('admin/album/edit/{id}','Admin\AlbumController@edit'); //编辑照片
+Route::post('admin/album/ajaxDelete','Admin\AlbumController@ajaxDelete'); //ajax异步保存
+
+
 
 Route::post('admin/album/fileUploads','Admin\AlbumController@fileUploads'); //上传照片照片
 

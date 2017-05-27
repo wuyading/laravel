@@ -42,6 +42,7 @@
             <!-- END PAGE BAR -->
             <!-- END PAGE HEADER-->
             <div id="demo">
+                <input type="text" id="name" name="name" value="99999" >
                 <div id="as" ></div>
             </div>
         </div>
@@ -50,9 +51,6 @@
     <!-- END CONTENT -->
 </div>
 <!-- END CONTAINER -->
-<iframe name="iframe_message" style="display: none">
-
-</iframe>
 <!-- BEGIN FOOTER -->
 @include('Admin.Common.footer')
 @show
@@ -73,7 +71,7 @@
     $('#as').diyUpload({
         url:'/admin/album/fileUploads',
         success:function( data ) {
-            alert(data.msg);
+            alert(data.msg)
             window.location.href = "/admin/album";
         },
         error:function( err ) {

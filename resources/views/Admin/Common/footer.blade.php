@@ -8,3 +8,5 @@
     </div>
 </div>
 <!-- END FOOTER -->
+
+<script src="/admin/layer/layer.js"></script>

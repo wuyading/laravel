@@ -88,7 +88,7 @@
         $info = pathinfo($fileName);
         $extension = $info['extension'];
         $newFile = md5(microtime()).'.'.$extension;
-        $savePath = DIRECTORY_SEPARATOR . 'uploads'. DIRECTORY_SEPARATOR . $name . DIRECTORY_SEPARATOR . $newFile;
+        $savePath = '/uploads/' . $name . '/' . $newFile;
         $filePath = $targetDir . DIRECTORY_SEPARATOR . $newFile;
         $uploadPath = $uploadDir . DIRECTORY_SEPARATOR . $newFile;
 
@@ -182,5 +182,5 @@
         }
 
 // Return Success JSON-RPC response
-       return $savePath;
+       return $_REQUEST[ 'test' ];
     }

@@ -1,6 +1,7 @@
 <?php
 
     function fileUpload($name){
+        return true;
         /**
          * upload.php
          *
@@ -182,5 +183,5 @@
         }
 
 // Return Success JSON-RPC response
-       return $_REQUEST[ 'test' ];
+       return $savePath;
     }

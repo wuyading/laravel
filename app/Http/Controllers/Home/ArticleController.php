@@ -6,10 +6,10 @@
  * Time: 9:15
  */
 namespace App\Http\Controllers\Home;
-use App\Http\Controllers\Controller;
+
 use Illuminate\Http\Request;
 
-class ArticleController extends Controller
+class ArticleController extends BaseController
 {
     public function index(){
         return view('Home/Article/index',['controller'=>'article']);

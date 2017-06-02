@@ -28,17 +28,19 @@ class AlbumController extends BaseController
     //批量上传照片
     public function fileUploads()
     {
-
-        return response()->json(array(
-            'status' => 1001,
-            'msg' =>$_POST['a']
-        ));
+        if ( empty($_POST['province']) || empty($_POST['city']) || empty($_POST['area'])) {
+            return response()->json(array(
+                'status' => 1002,
+                'msg' =>'请正确选择城市！'
+            ));
+        }
+        $area_path = $_POST['province'].'_'.$_POST['city'].'_'.$_POST['area'];
        $path =  fileUpload('album');
        $userId = session('userId');
        $data = [
            'image' => $path,
            'category_id' => '1',
-           'area_path' => '1',
+           'area_path' => $area_path,
            'uploader' => $userId,
            'add_time' => time()
        ];
@@ -78,7 +80,7 @@ class AlbumController extends BaseController
         $delete = $album->toArray();
         $return = $album->delete();
         if ( $return ) {
-            unlink(public_path().$delete['image']);
+            @unlink(public_path().$delete['image']);
             return response()->json(array(
                 'status' => 1001,
                 'msg' =>'删除成功！'

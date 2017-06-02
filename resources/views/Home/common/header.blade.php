@@ -12,8 +12,8 @@
                         <li><a class="show-1 templatemo_home @if ($controller == 'index') active @endif " href="{{ URL('/') }}">风景欣赏</a></li>
                         <li><a class="show-2 templatemo_page2 @if ($controller == 'article') active @endif " href="{{ URL('article/index') }}">文章阅读</a></li>
                         <li><a class="show-3 templatemo_page3 @if ($controller == 'blog') active @endif " href="{{ URL('blog/index') }}">博客浏览</a></li>
-                        <li><a class="show-4 templatemo_page4 @if ($controller == 'index') active @endif " href="{{ URL('article/index') }}">About Us</a></li>
-                        <li><a class="show-5 templatemo_page5 @if ($controller == 'index') active @endif " href="{{ URL('article/index') }}">Contact Us</a></li>
+                        <li><a class="show-4 templatemo_page4 @if ($controller == 'about') active @endif " href="{{ URL('about/index') }}">About Us</a></li>
+                        <li><a class="show-5 templatemo_page5 @if ($controller == 'contact') active @endif " href="{{ URL('contact/index') }}">Contact Us</a></li>
                     </ul>
                 </div> <!-- /.col-md-12 -->
             </div> <!-- /.row -->

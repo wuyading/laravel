@@ -16,6 +16,10 @@ Route::get('/', 'Home\IndexController@index');
 //前端链接
 Route::get('article/index','Home\ArticleController@index'); //文章
 Route::get('blog/index','Home\BlogController@index'); //博客
+Route::get('about/index','Home\AboutController@index'); //关于我们
+Route::get('contact/index','Home\ContactController@index'); //联系我们
+
+
 
 
 //后端链接
@@ -30,6 +34,7 @@ Route::get('admin/album/edit/{id}','Admin\AlbumController@edit'); //编辑照片
 Route::post('admin/album/ajaxDelete','Admin\AlbumController@ajaxDelete'); //ajax异步保存
 Route::get('admin/album/getCity','Admin\AlbumController@getCity'); //获取城市;
 Route::get('admin/album/getArea','Admin\AlbumController@getArea'); //获取地区
+
 
 
 

@@ -1,7 +1,6 @@
 <?php
 
     function fileUpload($name){
-        return true;
         /**
          * upload.php
          *

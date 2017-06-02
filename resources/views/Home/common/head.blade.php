@@ -8,7 +8,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 
-    <title>Concept HTML5 responsive template</title>
+    <title>标题</title>
     <meta name="keywords" content="concept, responsive bootstrap, green, white, free html5 template, templatemo" />
     <meta name="description" content="Concept is free responsive template using bootstrap framework. Gallery is integrated with responsive lightbox." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

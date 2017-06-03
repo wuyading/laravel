@@ -6,6 +6,7 @@
  * Time: 17:19
  */
 namespace App\Http\Controllers\Admin;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Album;
@@ -14,8 +15,9 @@ class AlbumController extends BaseController
 {
     public function index()
     {
-        $data = DB::table('album')->orderBy('id','desc')->get()->toArray();
-        return view('Admin/Album/index',['controller'=>'album','albums'=>$data]);
+//        $data = DB::table('album')->orderBy('id','desc')->get()->toArray();
+        $data = DB::table('album')->orderBy('id','desc')->paginate(10)->toArray();
+        return view('Admin/Album/index',[ 'controller'=>'album', 'albums'=>$data ]);
     }
 
     //添加照片

@@ -1,8 +1,8 @@
-@include('Home/common/head')
+@include('Home.Common.head')
 @show
 
 <body>
-@include('Home/common/header')
+@include('Home.Common.header')
 @show
 
 <div class="content contact" id="menu-5">
@@ -55,7 +55,7 @@
     </div> <!-- /.container -->
 </div> <!-- /.contact -->
 
-@include('Home/common/footer')
+@include('Home.Common.footer')
 @show
 
 </body>

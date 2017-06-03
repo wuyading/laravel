@@ -14,6 +14,9 @@
 Route::get('/', 'Home\IndexController@index');
 
 //前端链接
+Route::get('scene/index','Home\SceneController@index'); //风景详情
+
+
 Route::get('article/index','Home\ArticleController@index'); //文章
 Route::get('blog/index','Home\BlogController@index'); //博客
 Route::get('about/index','Home\AboutController@index'); //关于我们

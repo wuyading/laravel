@@ -43,7 +43,7 @@
                         <th>操作</th>
                     </tr>
 
-                    @foreach ($albums as $album)
+                    @foreach ($albums['data'] as $album)
                         <tr>
                             <td>{{ $album->id }}</td>
                             <td class="col-sm-3">
@@ -59,7 +59,12 @@
 
                 </table>
                 <div class="pagination">
-                    <?='分页'?>
+                    @if($albums['prev_page_url'])
+                        <a href="{{ $albums['prev_page_url'] }}">上一页</a>
+                    @endif
+                    @if($albums['next_page_url'])
+                        <a href="{{ $albums['next_page_url'] }}">下一页</a>
+                    @endif
                 </div>
             </div>
         </div>

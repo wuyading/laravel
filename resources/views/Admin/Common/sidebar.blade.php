@@ -13,7 +13,7 @@
             <li class="sidebar-search-wrapper">
             </li>
             <li class="nav-item start @if ($controller == 'index') active open @endif ">
-                <a href="/admin/index" class="nav-link nav-toggle">
+                <a href="{{ action('Admin\IndexController@index') }}" class="nav-link nav-toggle">
                     <i class="icon-home"></i>
                     <span class="title">首页</span>
                     <span class="selected"></span>
@@ -28,7 +28,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item">
-                        <a href="/admin/album" class="nav-link ">
+                        <a href="{{ action('Admin\AlbumController@index') }}" class="nav-link ">
                             <i class="icon-layers"></i>
                             <span class="title">相册列表</span>
                         </a>
@@ -36,7 +36,7 @@
                 </ul>
             </li>
             <li class="nav-item  ">
-                <a href="javascript:;" class="nav-link nav-toggle">
+                <a href="" class="nav-link nav-toggle">
                     <i class="icon-layers"></i>
                     <span class="title">文章管理</span>
                     <span class="arrow"></span>

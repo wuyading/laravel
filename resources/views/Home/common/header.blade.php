@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col-md-12 text-center">
                 <a class="templatemo_logo">
-                    <h1>Concept</h1>
+                    <h1>@if( !empty($title) ) {{ $title }} @endif</h1>
                 </a> <!-- /.logo -->
             </div> <!-- /.col-md-12 -->
         </div> <!-- /.row -->

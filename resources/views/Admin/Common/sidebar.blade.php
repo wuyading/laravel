@@ -35,15 +35,15 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item  ">
+            <li class="nav-item    @if ($controller == 'article') active open @endif  ">
                 <a href="" class="nav-link nav-toggle">
                     <i class="icon-layers"></i>
                     <span class="title">文章管理</span>
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
-                    <li class="nav-item  ">
-                        <a href="layout_classic_page_head.html" class="nav-link ">
+                    <li class="nav-item">
+                        <a href="{{ action('Admin\ArticleController@index') }}" class="nav-link ">
                             <span class="title">文章列表</span>
                         </a>
                     </li>

@@ -23,7 +23,7 @@
                     <li>
                         <a href="/admin/index">首页</a>
                         <i class="fa fa-circle"></i>
-                        <a href="#">文章列表</a>
+                        <a href="#">博客列表</a>
                     </li>
                 </ul>
 
@@ -32,7 +32,7 @@
             <!-- END PAGE HEADER-->
             <div class="row">
                 <div style="margin: 15px 15px 15px 0;">
-                    <a class="btn btn-danger" href="{{ action('Admin\ArticleController@add') }}">添加文章 <i class="fa fa-plus"></i></a>
+                    <a class="btn btn-danger" href="{{ action('Admin\BlogController@add') }}">添加博客 <i class="fa fa-plus"></i></a>
                 </div>
                 <div class="col-md-12 col-sm-12">
                     <table class="table table-hover">
@@ -78,7 +78,7 @@
             ,btn: ['确定', '取消']
             ,area: '200px'
             ,yes: function(index){
-                $.post('{{ action('Admin\ArticleController@ajaxDelete') }}',{'id':id},function (res) {
+                $.post('{{ action('Admin\BlogController@ajaxDelete') }}',{'id':id},function (res) {
                     if(res.status == 1001){
                         layer.alert(res.msg, {
                             icon: 6
@@ -87,7 +87,7 @@
                             ,area: '200px'
                             ,yes: function(index){
                                 layer.close(index);
-                                window.location.href = "{{ action('Admin\ArticleController@index') }}";
+                                window.location.href = "{{ action('Admin\BlogController@index') }}";
                             }
                         });
                     }else{

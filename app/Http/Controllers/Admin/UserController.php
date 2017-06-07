@@ -9,10 +9,14 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-    public function index(){
-        return view('Admin/User/index');
+    //用户首页
+    public function index()
+    {
+        $list = DB::table('users')->get()->toArray();
+        return view('Admin/User/index',[ 'controller' => 'system','list' => $list ]);
     }
 }

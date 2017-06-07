@@ -39,9 +39,19 @@ Route::post('admin/album/ajaxDelete','Admin\AlbumController@ajaxDelete'); //ajax
 Route::get('admin/album/getCity','Admin\AlbumController@getCity'); //获取城市;
 Route::get('admin/album/getArea','Admin\AlbumController@getArea'); //获取地区
 
-Route::get('admin/article','Admin\ArticleController@index'); //文章首页
-Route::get('admin/article/add','Admin\ArticleController@add'); //文章首页
-Route::get('admin/article/ajaxDelete','Admin\ArticleController@ajaxDelete'); //文章首页
+Route::get('admin/article','Admin\ArticleController@index'); //文章列表
+Route::get('admin/article/add','Admin\ArticleController@add'); //文章添加
+Route::get('admin/article/ajaxDelete','Admin\ArticleController@ajaxDelete'); //文章删除
+
+Route::get('admin/blog','Admin\BlogController@index'); //博客列表
+Route::get('admin/blog/add','Admin\BlogController@add'); //博客添加
+Route::get('admin/blog/ajaxDelete','Admin\BlogController@ajaxDelete'); //博客删除
+
+Route::get('admin/Category','Admin\CategoryController@index'); //分类列表
+Route::post('admin/Category/ajaxAdd','Admin\CategoryController@ajaxAdd'); //分类添加
+Route::post('admin/Category/ajaxSave','Admin\CategoryController@ajaxSave'); //分类编辑
+Route::post('admin/Category/ajaxDelete','Admin\CategoryController@ajaxDelete'); //分类删除
+
 
 
 

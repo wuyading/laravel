@@ -62,7 +62,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item  ">
-                        <a href="layout_classic_page_head.html" class="nav-link ">
+                        <a href="{{ action('Admin\BlogController@index') }}" class="nav-link ">
                             <span class="title">博客列表</span>
                         </a>
                     </li>
@@ -73,7 +73,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item">
+            <li class="nav-item  @if ($controller == 'system') active open @endif ">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-settings"></i>
                     <span class="title">系统设置</span>
@@ -81,8 +81,13 @@
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item">
-                        <a href="javascript:;" class="nav-link nav-toggle">
+                        <a href="{{ action('Admin\UserController@index') }}" class="nav-link nav-toggle">
                             <i class="icon-user"></i> 用户管理
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ action('Admin\CategoryController@index') }}" class="nav-link nav-toggle">
+                            <i class="icon-folder"></i> 分类管理
                         </a>
                     </li>
                 </ul>

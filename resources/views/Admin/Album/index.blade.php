@@ -32,7 +32,7 @@
         <!-- END PAGE HEADER-->
         <div class="row">
             <div style="margin: 15px 15px 15px 0;">
-                <a class="btn btn-danger" href="/admin/album/add">添加照片</a>
+                <a class="btn btn-danger" href="/admin/album/add">添加照片 <i class="fa fa-plus"></i></a>
             </div>
             <div class="col-md-12 col-sm-12">
                 <table class="table table-hover">

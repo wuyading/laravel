@@ -28,9 +28,9 @@
                     <li>
                         <a href="/index">首页</a>
                         <i class="fa fa-circle"></i>
-                        <a href="#">文章管理</a>
+                        <a href="#">博客管理</a>
                         <i class="fa fa-circle"></i>
-                        <a href="#"><?= isset($id) ? '修改' : '添加'?>文章</a>
+                        <a href="#"><?= isset($id) ? '修改' : '添加'?>博客</a>
                     </li>
                 </ul>
             </div>

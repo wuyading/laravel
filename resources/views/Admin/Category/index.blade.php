@@ -129,18 +129,11 @@
         var zTree = $.fn.zTree.getZTreeObj("treeDemo");
         zTree.selectNode(treeNode);
         var srcNode = zTree.getSelectedNodes();
-        if(treeNode.children){
+        if(!treeNode.children){
             return confirm("确认删除 节点 -- " + treeNode.name + " 吗？");
         }else{
-            layer.alert('该节点下有子节点，请先删除子节点！', {
-                icon: 6
-                ,time: 0 //不自动关闭
-                ,btn: ['确定']
-                ,area: '200px'
-                ,yes: function(index){
-                    layer.close(index);
-                }
-            });
+            layer.alert('该节点下有子节点，请先删除子节点！', {icon: 0,time:0,closeBtn: 0});
+            return false;
         }
 
     }
@@ -156,6 +149,7 @@
                     ,area: '200px'
                     ,yes: function(index){
                         layer.close(index);
+                        window.location.href = "{{ action('Admin\CategoryController@index') }}";
                     }
                 });
             }else{

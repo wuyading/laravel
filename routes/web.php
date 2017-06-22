@@ -41,11 +41,19 @@ Route::get('admin/album/getArea','Admin\AlbumController@getArea'); //获取地�
 
 Route::get('admin/article','Admin\ArticleController@index'); //文章列表
 Route::get('admin/article/add','Admin\ArticleController@add'); //文章添加
+Route::post('admin/article/ajax_save_article','Admin\ArticleController@ajax_save_article'); //文章添加
 Route::get('admin/article/ajaxDelete','Admin\ArticleController@ajaxDelete'); //文章删除
 
 Route::get('admin/blog','Admin\BlogController@index'); //博客列表
 Route::get('admin/blog/add','Admin\BlogController@add'); //博客添加
 Route::get('admin/blog/ajaxDelete','Admin\BlogController@ajaxDelete'); //博客删除
+
+Route::get('admin/setting','Admin\SettingController@index'); //基本配置
+Route::get('admin/setting/second','Admin\SettingController@second'); //邮件配置
+Route::get('admin/setting/third','Admin\SettingController@third'); //其他配置
+Route::post('admin/setting/ajax_save_data','Admin\SettingController@ajax_save_data'); //保存基本配置
+Route::post('admin/setting/ajax_save_second','Admin\SettingController@ajax_save_second'); //保存邮件配置
+
 
 Route::get('admin/Category','Admin\CategoryController@index'); //分类列表
 Route::post('admin/Category/ajaxAdd','Admin\CategoryController@ajaxAdd'); //分类添加

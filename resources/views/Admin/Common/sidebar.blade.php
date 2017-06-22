@@ -90,6 +90,11 @@
                             <i class="icon-folder"></i> 分类管理
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ action('Admin\SettingController@index') }}" class="nav-link nav-toggle">
+                            <i class="icon-folder"></i> 站点配置
+                        </a>
+                    </li>
                 </ul>
             </li>
         </ul>

@@ -100,5 +100,33 @@ class CategoryController extends BaseController
 
     }
 
+    /**
+     * 获取分类列表信息
+     *
+     * @param $id
+     * @return array|bool|\Zilf\Db\ActiveRecord[]
+     */
+    public function get_category($id){
+        $cat = $this->get_sub_category($id);
+        if(empty($cat)){
+            return false;
+        }else{
+            foreach($cat as $key => $value){
+                $cat[$key]->children = $this->get_category($value->id);
+            }
+        }
+        return $cat;
+    }
+
+    /**
+     * 获取分类节点的信息
+     *
+     * @param $id
+     * @return array|\Zilf\Db\ActiveRecord[]
+     */
+    public function get_sub_category($id){
+        return DB::table('category')->where(['parent_id'=>$id])->get()->toArray();
+    }
+
 
 }

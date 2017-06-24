@@ -45,7 +45,7 @@
                     <style>
                         .table th{text-align: right}
                     </style>
-                    <form id="sub_form" target="" action="{{ action('Admin\ArticleController@ajax_save_article') }}" method="post" enctype="multipart/form-data">
+                    <form id="sub_form" target="iframe_message" action="{{ action('Admin\ArticleController@ajax_save_article') }}" method="post" enctype="multipart/form-data">
                     <table class="table" style="width: 1050px;">
                         <tr>
                             <th><span style="color: red">*</span>文章标题：</th>
@@ -54,7 +54,7 @@
                         <tr>
                             <th><span style="color: red">*</span>图片：</th>
                             <td>
-                                <img id="preview" style="height: 120px;border: 1px solid #AAAAAA;" src="<?=isset($info['logo']) ? $info['logo'] : ''?>" />
+                                <img id="preview" style="height: 120px;border: 1px solid #AAAAAA;" src="<?=isset($info['file']) ? $info['file'] : ''?>" />
                                 <br /><br />
                                 <input type="file" name="file" onchange="imgPreview(this)" />
                             </td>
@@ -72,7 +72,7 @@
                                     <select class="form-control input-small inline c_first" name="category_id">
                                         <option value="0">==请选择==</option>
                                         <?php foreach ($list as $row) : ?>
-                                        <option value="{{ $row->id }}" @if(isset($info->category_id) && $row->id == $info->category_id) selected @endif >{{ $row->name }}</option>
+                                        <option value="{{ $row->id }}" @if(isset($info['category_id']) && $row->id == $info['category_id']) selected @endif >{{ $row->name }}</option>
                                         <?php endforeach;?>
                                     </select>
                                 </div>
@@ -120,11 +120,22 @@
 
     function show_message(json) {
         if(json.status == 1001){
-            layer.alert(json.msg);
-
-            window.location.href = "";
+            layer.alert(json.msg, {
+                icon: 6
+                ,time: 0 //不自动关闭
+                ,btn: ['确定']
+                ,area: '200px'
+                ,yes: function(index){
+                    layer.close(index);
+                    window.location.href = "{{ action('Admin\ArticleController@index') }}";
+                }
+            });
         }else{
-            layer.alert(json.msg);
+            layer.alert(json.msg,{
+                icon:0
+                ,time:0
+                ,btn: ['确定']
+            });
         }
     }
 </script>

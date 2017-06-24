@@ -38,27 +38,32 @@
                     <table class="table table-hover">
                         <tr>
                             <th>编号</th>
+                            <th>标题</th>
+                            <th>内容</th>
+                            <th>分类</th>
                             <th>图片</th>
-                            <th>添加时间</th>
+                            <th>更新时间</th>
                             <th>操作</th>
                         </tr>
-
+                        @foreach( $list as $item )
                             <tr>
-                                <td>111</td>
+                                <td>{{ $item->id }}</td>
+                                <td>{{ $item->title }}</td>
+                                <td>{{ strip_tags(htmlspecialchars_decode($item->content)) }}</td>
+                                <td>{{ $item->category_id }}</td>
                                 <td class="col-sm-3">
-                                    <img src="" alt="" style="width:50%">
+                                    <img src="{{ $item->file }}" alt="" style="width:20%">
                                 </td>
-                                <td>11</td>
+                                <td>{{ date('Y-m-d H:i:s',$item->update_time) }}</td>
                                 <td>
-                                    <a class="btn btn-danger" href="javascript:" onclick="ajaxDelete(11)">删除</a>
+                                    <a class="btn btn-primary" href="{{ action('Admin\ArticleController@add',['id'=>$item->id]) }}">修改</a>
+                                    <a class="btn btn-danger" href="javascript:" onclick="ajaxDelete({{ $item->id }})">删除</a>
                                 </td>
                             </tr>
-
+                        @endforeach
 
                     </table>
                     <div class="pagination">
-                            <a href="">上一页</a>
-                            <a href="">下一页</a>
                     </div>
                 </div>
             </div>

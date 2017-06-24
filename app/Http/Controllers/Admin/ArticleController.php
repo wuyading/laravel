@@ -18,26 +18,37 @@ class ArticleController extends BaseController
     //文章列表
     public function index()
     {
-        return view('Admin/Article/index',[ 'controller' => 'article' ]);
+        $list = DB::table('article')->orderBy('id', 'desc')->paginate(10)->toArray();
+        return view('Admin/Article/index',[ 'controller' => 'article','list'=>$list['data'] ]);
     }
 
     //添加文章
-    public function add()
+    public function add(Request $request)
     {
+        $id = $request->get('id');
         $list = (new CategoryController())->get_category(2);
-        return view('Admin/Article/add', [ 'controller' => 'article','list' => $list ]);
+        if($id){
+            $info = Article::find($id)->toArray();
+            return view('Admin/Article/add', [ 'controller' => 'article','list' => $list,'info' => $info ]);
+        }else{
+            return view('Admin/Article/add', [ 'controller' => 'article','list' => $list ]);
+        }
     }
 
     //保存文章
     public function ajax_save_article(Request $request)
     {
         $data = $request->input();
-        dump($data);
+        $data['update_time'] = time();
+        if($data){
+            unset($data['s']);
+            $data['content'] = isset($data['content']) ? filter_var($data['content'],FILTER_SANITIZE_SPECIAL_CHARS) : '';
+        }
         /**
          * @var $img UploadedFile 上传文件
          */
         $file = $request->file('file');
-        $upload_dir = '/uploads/news';
+        $upload_dir = '/uploads/article';
         if(!file_exists($upload_dir)){
             @mkdir($upload_dir);
         }
@@ -47,8 +58,29 @@ class ArticleController extends BaseController
             if($file->getError()){
                 return $this->json_callback($file->getErrorMessage());
             }
-            $data['web_logo'] = $upload_dir.'/'.$file_name;
+            $data['file'] = $upload_dir.'/'.$file_name;
         }
+
+        if(isset($data['id']) && !empty($data['id']) ){ //修改内容
+            $article = Article::find($data['id']);
+            if($article){
+                $is_success = DB::table('article')->update($data);
+            }else{
+                $is_success = false;
+            }
+        }else{ //添加内容
+            unset($data['id']);
+            $data['update_time'] = time();
+            $is_success = DB::table('article')->insertGetId($data);
+        }
+
+        if($is_success){
+            $msg = ['status'=>1001,'msg'=>'保存成功！'];
+        }else{
+            $msg = ['status'=>3001,'msg'=>'保存失败！'];
+        }
+
+        return $this->json_callback($msg);
     }
 
 
@@ -58,14 +90,12 @@ class ArticleController extends BaseController
     {
         $id = $request->input('id');
         $article = Article::find($id);
-        $delete = $article->toArray();
         $return = $article->delete();
         if ($return) {
             return response()->json(array(
                 'status' => 1001,
                 'msg' => '删除成功！'
             ));
-
         } else {
             return response()->json(array(
                 'status' => 1002,

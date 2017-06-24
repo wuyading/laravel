@@ -42,14 +42,9 @@
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
-                    <li class="nav-item">
+                    <li class="nav-item @if ($controller == 'article') active open @endif  ">
                         <a href="{{ action('Admin\ArticleController@index') }}" class="nav-link ">
                             <span class="title">文章列表</span>
-                        </a>
-                    </li>
-                    <li class="nav-item  ">
-                        <a href="layout_light_page_head.html" class="nav-link ">
-                            <span class="title">2</span>
                         </a>
                     </li>
                 </ul>

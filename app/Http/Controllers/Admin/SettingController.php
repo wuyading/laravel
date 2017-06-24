@@ -127,9 +127,7 @@ EOT;
                 $is_success = false;
             }
         }else{ //添加内容
-            $setting_model = new Setting();
-            $setting_model->setAttributes($datas);
-            $is_success = $setting_model->save();
+            $is_success = DB::table('setting')->insertGetId($datas);
         }
 
         if($is_success){

@@ -17,7 +17,7 @@ class AlbumController extends BaseController
     //相册列表
     public function index()
     {
-        $data = DB::table('album')->orderBy('id', 'desc')->paginate(10)->toArray();
+        $data = DB::table('album')->orderBy('id','desc')->Paginate(10);
         return view('Admin/Album/index', ['controller' => 'album', 'albums' => $data]);
     }
 

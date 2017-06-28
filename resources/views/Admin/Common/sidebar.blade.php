@@ -17,17 +17,17 @@
                     <i class="icon-home"></i>
                     <span class="title">首页</span>
                     <span class="selected"></span>
-                    <span class="arrow open"></span>
+                    <span class="arrow @if ($controller == 'index') open @endif "></span>
                 </a>
             </li>
             <li class="nav-item  @if ($controller == 'album') active open @endif  ">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-diamond"></i>
                     <span class="title">相册管理</span>
-                    <span class="arrow"></span>
+                    <span class="arrow @if ($controller == 'album') open @endif "></span>
                 </a>
                 <ul class="sub-menu">
-                    <li class="nav-item">
+                    <li class="nav-item  @if ($controller == 'album') active open @endif  ">
                         <a href="{{ action('Admin\AlbumController@index') }}" class="nav-link ">
                             <i class="icon-layers"></i>
                             <span class="title">相册列表</span>
@@ -35,11 +35,11 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item    @if ($controller == 'article') active open @endif  ">
+            <li class="nav-item @if ($controller == 'article') active open @endif  ">
                 <a href="" class="nav-link nav-toggle">
                     <i class="icon-layers"></i>
                     <span class="title">文章管理</span>
-                    <span class="arrow"></span>
+                    <span class="arrow @if ($controller == 'article') open @endif "></span>
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item @if ($controller == 'article') active open @endif  ">
@@ -49,11 +49,11 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item  ">
+            <li class="nav-item @if ($controller == 'blog') active open @endif ">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-layers"></i>
                     <span class="title">博客管理</span>
-                    <span class="arrow"></span>
+                    <span class="arrow @if ($controller == 'blog') open @endif "></span>
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item  ">

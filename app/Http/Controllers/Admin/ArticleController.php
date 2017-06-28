@@ -18,8 +18,8 @@ class ArticleController extends BaseController
     //文章列表
     public function index()
     {
-        $list = DB::table('article')->orderBy('id', 'desc')->paginate(10)->toArray();
-        return view('Admin/Article/index',[ 'controller' => 'article','list'=>$list['data'] ]);
+        $list = DB::table('article')->orderBy('id', 'desc')->paginate(10);
+        return view('Admin/Article/index',[ 'controller' => 'article','list'=>$list ]);
     }
 
     //添加文章
@@ -62,9 +62,11 @@ class ArticleController extends BaseController
         }
 
         if(isset($data['id']) && !empty($data['id']) ){ //修改内容
+
             $article = Article::find($data['id']);
+
             if($article){
-                $is_success = DB::table('article')->update($data);
+                $is_success = DB::table('article')->where(['id'=>$data['id']])->update($data);
             }else{
                 $is_success = false;
             }
@@ -92,6 +94,7 @@ class ArticleController extends BaseController
         $article = Article::find($id);
         $return = $article->delete();
         if ($return) {
+            @unlink(public_path() . $article->file);
             return response()->json(array(
                 'status' => 1001,
                 'msg' => '删除成功！'

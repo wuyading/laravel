@@ -41,8 +41,8 @@ Route::get('admin/album/getArea','Admin\AlbumController@getArea'); //获取地�
 
 Route::get('admin/article','Admin\ArticleController@index'); //文章列表
 Route::get('admin/article/add','Admin\ArticleController@add'); //文章添加
-Route::post('admin/article/ajax_save_article','Admin\ArticleController@ajax_save_article'); //文章添加
-Route::get('admin/article/ajaxDelete','Admin\ArticleController@ajaxDelete'); //文章删除
+Route::post('admin/article/ajax_save_article','Admin\ArticleController@ajax_save_article'); //文章编辑保存
+Route::post('admin/article/ajaxDelete','Admin\ArticleController@ajaxDelete'); //文章删除
 
 Route::get('admin/blog','Admin\BlogController@index'); //博客列表
 Route::get('admin/blog/add','Admin\BlogController@add'); //博客添加

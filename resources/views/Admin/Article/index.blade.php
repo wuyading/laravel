@@ -49,7 +49,7 @@
                             <tr>
                                 <td>{{ $item->id }}</td>
                                 <td>{{ $item->title }}</td>
-                                <td>{{ strip_tags(htmlspecialchars_decode($item->content)) }}</td>
+                                <td>{{ mb_substr(strip_tags(htmlspecialchars_decode($item->content)),0,10).'...' }}</td>
                                 <td>{{ $item->category_id }}</td>
                                 <td class="col-sm-3">
                                     <img src="{{ $item->file }}" alt="" style="width:20%">

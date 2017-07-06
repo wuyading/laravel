@@ -7,11 +7,14 @@
  */
 namespace App\Http\Controllers\Home;
 
+use App\Models\Article;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ArticleController extends BaseController
 {
     public function index(){
-        return view('Home/Article/index',['controller'=>'article']);
+        $article = DB::table('article')->orderBy('sortid', 'desc')->orderBy('id','desc')->paginate(2);
+        return view('Home/Article/index',['controller'=>'article','article'=>$article]);
     }
 }

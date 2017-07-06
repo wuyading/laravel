@@ -18,7 +18,10 @@ class ArticleController extends BaseController
     //文章列表
     public function index()
     {
+        //获取文章
         $list = DB::table('article')->orderBy('id', 'desc')->paginate(10);
+        //获取文章分类
+
         return view('Admin/Article/index',[ 'controller' => 'article','list'=>$list ]);
     }
 
